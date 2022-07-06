@@ -11,5 +11,6 @@ order by 1 desc"""
 result = execute(query);
 #email = Email();
 #email.send_mail("test")
-MatPlot().Line(result);
+if(MatPlot().Line(result,"CFL")):
+    Email().send_mail("test")
 
