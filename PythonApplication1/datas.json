@@ -1,0 +1,12 @@
+{
+  "queries": [
+    {
+      "name": "CFL",
+      "query": "select trunc(logtime), sum(totalrequest),method from tblapilogsummery where applicationname='CFLWebService' and method like '%SMSForwading.svc%' group by trunc(logtime), method order by 1 desc"
+    },
+    {
+      "name": "Register_CPID",
+      "query": "select trunc(logtime), sum(totalrequest),method from tblapilogsummery where applicationname='APIHUB2' and method like '%registerCpid%' group by trunc(logtime),method order by 1 desc"
+    }
+  ]
+}

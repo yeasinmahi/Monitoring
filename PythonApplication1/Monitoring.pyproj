@@ -23,6 +23,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Data_Populate.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Email.py">
       <SubType>Code</SubType>
     </Compile>
@@ -31,6 +34,9 @@
     </Compile>
     <Compile Include="MatPlot.py" />
     <Compile Include="Oracle_Con.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="datas.json" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

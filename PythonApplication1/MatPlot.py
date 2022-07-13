@@ -13,7 +13,6 @@ class MatPlot(object):
             for row in data:
                 x.append(row[0])
                 y.append(row[1])
-                #print(str(row[0]) + " " + str(row[1]))
             plt.plot(x, y)
             plt.savefig('Data/Images/'+name+'.png', bbox_inches='tight')
             return True

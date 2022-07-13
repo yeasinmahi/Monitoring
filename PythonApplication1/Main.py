@@ -1,16 +1,20 @@
 from Oracle_Con import execute
 from Email import Email
 from MatPlot import MatPlot
+from Data_Populate import Data_Populate
 
-query = """select trunc(logtime), sum(totalrequest),method from tblapilogsummery
-where applicationname='CFLWebService'
-and method like '%SMSForwading.svc%'
-group by trunc(logtime), method
-order by 1 desc"""
 
-result = execute(query);
-#email = Email();
-#email.send_mail("test")
-if(MatPlot().Line(result,"CFL")):
-    Email().send_mail("test")
+data = Data_Populate.GetQuerys()
+
+for i in data['queries']:
+    name = i["name"]
+    query = i["query"]
+    print(name+"\n"+ query+"\n\n")
+    result = execute(query);
+    Data_Populate().Export_Excel(result,name)
+    MatPlot().Line(result,name)
+        
+Email().send_mail("test")
+
+
 
