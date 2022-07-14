@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32510.428
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Monitoring", "PythonApplication1\Monitoring.pyproj", "{FCF7A0D5-FC93-4667-8A7A-71D61A0EE037}"
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Monitoring", "Monitoring\Monitoring.pyproj", "{FCF7A0D5-FC93-4667-8A7A-71D61A0EE037}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

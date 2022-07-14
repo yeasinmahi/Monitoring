@@ -49,12 +49,13 @@ class Email:
                 part.add_header('Content-Disposition','attachment;filename="%s"' % os.path.basename(filename))
                 msg.attach(part)
             #part.set_payload(open('Data/Images/*', 'rb').read())
-            
+
 
             s = smtplib.SMTP('172.16.7.183:25', timeout=15)
             m = msg.as_string()
             s.sendmail(sender, receiver, m)
             s.quit()
+            print("\nEmail sent successfully")
         except Exception as ex:
             print(str(ex))
 
