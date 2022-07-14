@@ -23,20 +23,23 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Data_Populate.py">
+    <Compile Include="Helper\Data_Populate.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Email.py">
+    <Compile Include="Helper\Email.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Main.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MatPlot.py" />
-    <Compile Include="Oracle_Con.py" />
+    <Compile Include="Helper\MatPlot.py" />
+    <Compile Include="Helper\Oracle_Con.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="datas.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helper\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

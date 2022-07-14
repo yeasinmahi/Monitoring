@@ -1,7 +1,7 @@
-from Oracle_Con import execute
-from Email import Email
-from MatPlot import MatPlot
-from Data_Populate import Data_Populate
+from Helper.Oracle_Con import execute
+from Helper.Email import Email
+from Helper.MatPlot import MatPlot
+from Helper.Data_Populate import Data_Populate
 
 
 data = Data_Populate.GetQuerys()
