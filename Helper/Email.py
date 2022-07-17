@@ -17,7 +17,7 @@ class Email:
 
             sender = "Report<DSSDigitalSolutions@no.smtp.mail>"
             receiver = ['my.arafat@blmanagedservices.com']
-            ccaddr = ['maria.zaman@banglalink.net']
+            ccaddr = ['maria.zaman@banglalink.net','zhaque@banglalink.net']
 
             msg = MIMEMultipart()
             msg['From'] = sender
@@ -28,9 +28,9 @@ class Email:
 
             msg['Subject'] = f'Health check report {date_}'
             body = f'Dear Concern, \n\n' \
-                   f'Please find the BOSGW health check report in below \n\n ' \
+                   f'Please find the BOSGW health check report as attachement \n\n ' \
                    f''+text+'\n\n' \
-                   f'Date: {date_} \n\n' 
+                   f'Please do not reply this email as this is an auto genarated email. Date: {date_} \n\n' 
 
             msg.attach(MIMEText(body, 'plain'))
             
