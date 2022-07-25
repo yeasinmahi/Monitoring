@@ -20,3 +20,9 @@ class Data_Populate(object):
         writer = pd.ExcelWriter('Data/Excels/'+name+'.xlsx')
         df.to_excel(writer, sheet_name=name)
         writer.save()
+
+    def Excel_To_Html(self,name):
+        df = pd.read_excel('Data/Excels/'+name+'.xlsx')
+        return df.to_html()
+
+      
