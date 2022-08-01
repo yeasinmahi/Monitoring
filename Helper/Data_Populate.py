@@ -18,11 +18,11 @@ class Data_Populate(object):
         df = pd.DataFrame(list(data))
 
         writer = pd.ExcelWriter('Data/Excels/'+name+'.xlsx')
-        df.to_excel(writer, sheet_name=name)
+        df.to_excel(writer, sheet_name=name, index=False)
         writer.save()
 
     def Excel_To_Html(self,name):
         df = pd.read_excel('Data/Excels/'+name+'.xlsx')
-        return df.to_html()
+        return df.to_html(index=False)
 
       

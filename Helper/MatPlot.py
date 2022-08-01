@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 
 
 class MatPlot(object):
@@ -14,12 +15,22 @@ class MatPlot(object):
             for row in data:
                 x.append(row[0])
                 y.append(row[1])
-            date_time = pd.to_datetime(x)
-            DF = pd.DataFrame()
-            DF['value'] = y
-            DF = DF.set_index(date_time.day)
+            x_date_time = pd.to_datetime(x)
 
-            plt.plot(DF)
+
+            max= np.max(y)
+            min= np.min(y)
+            max = max*1.3
+            min = min*.7
+
+            plt.title(name)
+            plt.xlabel("Date")
+            plt.ylabel("Count")
+
+            plt.ylim(min,max)
+
+            plt.plot(x_date_time.day, y)
+
             plt.savefig('Data/Images/'+name+'.png', bbox_inches='tight')
             plt.clf()
             return True

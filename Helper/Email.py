@@ -67,7 +67,7 @@ class Email:
     def get_html_templete(self, names):
         trs = ""
         for name in names:
-            trs+="<tr><td style='padding:0;'>"+name+"</td><td style='padding:0;'><img src='cid:"+name+"' alt='"+name+"' /></td><td>"+Data_Populate().Excel_To_Html(name)+"</td></tr>"
+            trs+="<tr><td style='padding:0;'><img src='cid:"+name+"' alt='"+name+"' /></td><td>"+Data_Populate().Excel_To_Html(name)+"</td></tr>"
         html = '''
  <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
