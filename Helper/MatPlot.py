@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import matplotlib.dates as mdates
 
 
 class MatPlot(object):
@@ -23,13 +24,21 @@ class MatPlot(object):
             max = max*1.3
             min = min*.7
 
+            fig, ax = plt.subplots()
+            ax.plot(x_date_time, y)
+
             plt.title(name)
             plt.xlabel("Date")
             plt.ylabel("Count")
 
             plt.ylim(min,max)
 
-            plt.plot(x_date_time.day, y)
+            
+
+            myFmt = mdates.DateFormatter('%d')
+            ax.xaxis.set_major_formatter(myFmt)
+            fig.autofmt_xdate()
+            
 
             plt.savefig('Data/Images/'+name+'.png', bbox_inches='tight')
             plt.clf()

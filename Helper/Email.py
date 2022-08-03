@@ -5,9 +5,7 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email.mime.application import MIMEApplication
 from Helper.Data_Populate import Data_Populate
-from email import encoders
-import os
-import glob
+
 
 class Email:
     species = "Email"
@@ -19,7 +17,7 @@ class Email:
 
             sender = "Report<DSSDigitalSolutions@no.smtp.mail>"
             receiver = ['my.arafat@blmanagedservices.com']
-            ccaddr = ['maria.zaman@banglalink.net']
+            ccaddr = ['maria.zaman@banglalink.net', 'zhaque@banglalink.net']
 
             msg = MIMEMultipart()
             msg['From'] = sender
@@ -29,10 +27,8 @@ class Email:
             receiver.extend(ccaddr)
 
             msg['Subject'] = f'Health check report {date_}'
-            body = self.get_html_templete(names)
-
-            #msg.attach(MIMEText(body, 'plain'))
-            msg.attach(MIMEText(body, 'html'))
+            html = Data_Populate().get_html_templete(names)
+            msg.attach(MIMEText(html, 'html'))
             
             for name in names:
                 self.attach_file_to_email(msg, 'Data/Images/', name, '.png', {'Content-ID': '<'+name+'>'})
@@ -40,7 +36,9 @@ class Email:
             # for attachement 
             #for name in names:
             #    self.attach_file_to_email(msg, 'Data/Excels/', name, '.xlsx')
-
+            r_name= 'Report_'+date_+'.pdf'
+            Data_Populate().images_to_Pdf(names,'Report_'+date_+'.pdf')
+            self.attach_file_to_email(msg, 'Data/Pdf/','Report_'+date_,'.pdf')
             
             s = smtplib.SMTP('172.16.7.183:25', timeout=15)
             m = msg.as_string()
@@ -64,27 +62,4 @@ class Email:
         # Attach the file to the message
         email_message.attach(file_attachment)
 
-    def get_html_templete(self, names):
-        trs = ""
-        for name in names:
-            trs+="<tr><td style='padding:0;'><img src='cid:"+name+"' alt='"+name+"' /></td><td>"+Data_Populate().Excel_To_Html(name)+"</td></tr>"
-        html = '''
- <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="x-apple-disable-message-reformatting">
-    <title>Monitoring </title>
-    <style>
-        table, td, div, h1, p {font-family: Arial, sans-serif;}
-        
-    </style>
-</head>
-<body>
-	<table role="presentation" style="width:602px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;">
-		''' + f'{trs}'+ '''
-	</table>
-</body>
-</html>
-'''
-        return html;
+    
