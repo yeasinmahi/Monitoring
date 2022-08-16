@@ -1,13 +1,11 @@
 import cx_Oracle
+from Helper.Settings import Settings
 cx_Oracle.init_oracle_client(lib_dir=r"C:\app\zhaque\product\11.2.0\instantclient_21_6")
 
 
-def execute(query):
-    con = cx_Oracle.connect('ApiHublog/AP1HuBL0g_61542627@172.16.10.76:2637/PRODBOS')
-    #print (con.version)
-    successr = '100'
-    avail = '100'
-
+def execute(query,connection):
+    cs = Settings().GetConnectionString(connection)
+    con = cx_Oracle.connect(cs["username"]+"/"+cs["password"]+"@"+cs["host_ip"] +":"+cs["port"] +"/"+cs["sid"])
     cur = con.cursor()
     cur.arraysize = 1
     cur.execute(query)

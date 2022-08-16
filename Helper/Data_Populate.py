@@ -10,9 +10,9 @@ from fpdf import FPDF
 class Data_Populate(object):
     species = "Data Load"
 
-    def GetQuerys():
+    def GetConfig():
         try:
-            f= open("datas.json")
+            f= open("config.json")
             data = json.load(f)
             f.close()
             return data

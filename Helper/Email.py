@@ -17,7 +17,8 @@ class Email:
 
             sender = "Report<DSSDigitalSolutions@no.smtp.mail>"
             receiver = ['my.arafat@blmanagedservices.com']
-            ccaddr = ['maria.zaman@banglalink.net', 'zhaque@banglalink.net']
+            #ccaddr = ['maria.zaman@banglalink.net', 'zhaque@banglalink.net']
+            ccaddr = ['maria.zaman@banglalink.net']
 
             msg = MIMEMultipart()
             msg['From'] = sender

@@ -1,0 +1,107 @@
+{
+  "ConnectionStrings": [
+
+    {
+      "name": "apihub",
+      "username": "ApiHub",
+      "password": "APIHUB_321",
+      "host_ip": "172.16.10.76",
+      "port": "2637",
+      "sid": "PRODBOS"
+    },
+    {
+      "name": "HVCDB",
+      "username": "HVCDB",
+      "password": "hvc",
+      "host_ip": "172.16.10.76",
+      "port": "2637",
+      "sid": "PRODBOS"
+    },
+    {
+      "name": "veon_apps",
+      "username": "veon_apps",
+      "password": "VEON_APPS_321",
+      "host_ip": "172.16.10.76",
+      "port": "2637",
+      "sid": "PRODBOS"
+    },
+    {
+      "name": "CFL",
+      "username": "CFL",
+      "password": "cfluser_123",
+      "host_ip": "172.16.10.76",
+      "port": "2637",
+      "sid": "PRODBOS"
+    },
+    {
+      "name": "ApiHublog",
+      "username": "ApiHublog",
+      "password": "AP1HuBL0g_61542627",
+      "host_ip": "172.16.10.76",
+      "port": "2637",
+      "sid": "PRODBOS"
+    }
+  ],
+  "queries": [
+    {
+      "name": "SignIn_SignUp_Bonus",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%processbonus%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "connection": "ApiHublog"
+    },
+    {
+      "name": "GetPackStatus",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%getpackstatus%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "connection": "ApiHublog"
+    },
+    {
+      "name": "RegisterCPID",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%registerCpid%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "connection": "ApiHublog"
+    },
+    {
+      "name": "IsServiceEligible",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%IsServiceEligible%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "connection": "ApiHublog"
+    },
+    {
+      "name": "GetCustomerInfo",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%GetCustomerInfo%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "connection": "ApiHublog"
+    },
+    {
+      "name": "DataPackPurchase",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%DataPackPurchase%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "connection": "ApiHublog"
+    },
+    {
+      "name": "PurchasePlan",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%purchasePlan%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "connection": "ApiHublog"
+    },
+    {
+      "name": "SendOTP",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%SendOTP%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "connection": "ApiHublog"
+    },
+    {
+      "name": "VolumeTransfer",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%VolumeTransfer%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "connection": "ApiHublog"
+    },
+    {
+      "name": "Facebook",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB' and method like '%cmswebservice4%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "connection": "ApiHublog"
+    },
+    {
+      "name": "Token",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='IDM' and method like '%token%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "connection": "ApiHublog"
+    },
+    {
+      "name": "CFL_Medallia",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='CFLWebService' and method like '%SMSForwading%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "connection": "ApiHublog"
+    }
+  ]
+}

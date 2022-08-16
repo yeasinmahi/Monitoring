@@ -23,6 +23,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Helper\Settings.py" />
     <Compile Include="Helper\Data_Populate.py">
       <SubType>Code</SubType>
     </Compile>
@@ -37,7 +38,7 @@
     <Compile Include="Helper\Oracle_Con.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="datas.json" />
+    <Content Include="config.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helper\" />
