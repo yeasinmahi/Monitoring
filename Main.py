@@ -18,7 +18,7 @@ for i in Settings().GetQueries():
     result = execute(query,connectionName);
     Data_Populate().Export_Excel(result,name)
     MatPlot().Line(result,name)
-#Email().send_mail(names)
+Email().send_mail(names)
 
 
 

@@ -37,7 +37,7 @@ class Email:
             # for attachement 
             #for name in names:
             #    self.attach_file_to_email(msg, 'Data/Excels/', name, '.xlsx')
-            r_name= 'Report_'+date_+'.pdf'
+            
             Data_Populate().images_to_Pdf(names,'Report_'+date_+'.pdf')
             self.attach_file_to_email(msg, 'Data/Pdf/','Report_'+date_,'.pdf')
             

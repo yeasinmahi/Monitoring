@@ -4,9 +4,6 @@ import pdfkit
 config = pdfkit.configuration(wkhtmltopdf = r"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe")  
 from fpdf import FPDF
 
-
-
-
 class Data_Populate(object):
     species = "Data Load"
 
@@ -23,10 +20,11 @@ class Data_Populate(object):
         df = pd.DataFrame(list(data))
 
         writer = pd.ExcelWriter('Data/Excels/'+name+'.xlsx')
-        df.to_excel(writer, sheet_name=name, index=False)
+        df.to_excel(writer, sheet_name=name, index=False,  na_rep='NaN')
         writer.save()
 
     def Excel_To_Html(self,name):
+        pd.set_option('display.max_colwidth', 40)
         df = pd.read_excel('Data/Excels/'+name+'.xlsx')
         return df.to_html(index=False)
 
@@ -54,7 +52,7 @@ class Data_Populate(object):
     </style>
 </head>
 <body>
-	<table role="presentation" style="width:602px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;">
+	<table role="presentation" style="width:auto;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;">
 		''' + f'{trs}'+ '''
 	</table>
 </body>
