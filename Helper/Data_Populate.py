@@ -1,7 +1,7 @@
 import json
 import pandas as pd
 import pdfkit
-config = pdfkit.configuration(wkhtmltopdf = r"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe")  
+#config = pdfkit.configuration(wkhtmltopdf = r"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe")  
 from fpdf import FPDF
 
 class Data_Populate(object):
@@ -18,7 +18,6 @@ class Data_Populate(object):
 
     def Export_Excel(self,data,name):
         df = pd.DataFrame(list(data))
-
         writer = pd.ExcelWriter('Data/Excels/'+name+'.xlsx')
         df.to_excel(writer, sheet_name=name, index=False,  na_rep='NaN')
         writer.save()

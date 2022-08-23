@@ -14,10 +14,13 @@ for i in Settings().GetQueries():
     names.append(name)
     query = i["query"]
     connectionName = i["connection"]
+    chart = i["chart"]
+
     print(name+"\n"+ connectionName+"\n"+ query+"\n\n")
+
     result = execute(query,connectionName);
     Data_Populate().Export_Excel(result,name)
-    MatPlot().Line(result,name)
+    MatPlot().Chart(result,name,chart)
 Email().send_mail(names)
 
 

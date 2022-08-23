@@ -8,6 +8,11 @@ class MatPlot(object):
     species = "Diagram"
 
    
+    def Chart(self,data,name,chart):
+        if(chart=="line"):
+            self.Line(data,name)
+        if(chart=="pie"):
+            self.Pie(data,name)
 
     def Line(self,data,name):
         x = []
@@ -46,6 +51,24 @@ class MatPlot(object):
         except:
             return False;
         #plt.show()
+
+    def Pie(self,data,name):
+        x = []
+        y = []
+        try:
+            for row in data:
+                x.append(row[0])
+                y.append(row[1])
+            
+            plt.title(name)
+            
+            plt.pie(y,labels=x)
+
+            plt.savefig('Data/Images/'+name+'.png', bbox_inches='tight')
+            plt.clf()
+            return True
+        except:
+            return False;
 
 
 
