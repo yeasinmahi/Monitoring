@@ -1,6 +1,5 @@
-set arg1=%1
 git add .
-git commit -am %arg1%
+git commit -am "test"
 git pull origin master
 git pull origin2 master
 git push origin master
