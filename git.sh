@@ -1,5 +1,5 @@
 git add .
-git commit -m $.
+git commit -m "$@"
 git pull origin master
 git pull origin2 master
 git push origin master
