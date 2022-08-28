@@ -30,7 +30,6 @@
     <Compile Include="Helper\Email.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helper\module1.py" />
     <Compile Include="Main.py">
       <SubType>Code</SubType>
     </Compile>
@@ -38,7 +37,11 @@
     <Compile Include="Helper\Oracle_Con.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".gitattributes" />
+    <Content Include=".gitignore" />
     <Content Include="config.json" />
+    <Content Include="LICENSE.txt" />
+    <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helper\" />
