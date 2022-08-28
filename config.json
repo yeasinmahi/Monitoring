@@ -49,12 +49,12 @@
       "connection": "ApiHublog",
       "chart": "line"
     },
-    {
-      "name": "GetPackStatus",
-      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%getpackstatus%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
-      "connection": "ApiHublog",
-      "chart": "line"
-    },
+    //{
+    //  "name": "GetPackStatus",
+    //  "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%getpackstatus%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+    //  "connection": "ApiHublog",
+    //  "chart": "line"
+    //},
     {
       "name": "Generate_CPID",
       "query": "select * from (select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='OGate' and method like '%cpid%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
@@ -116,9 +116,27 @@
       "chart": "line"
     },
     {
-      "name": "CFL_Medallia",
+      "name": "CFL_Medallia_Total_Requests",
       "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='CFLWebService' and method like '%SMSForwading%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
       "connection": "ApiHublog",
+      "chart": "line"
+    },
+    {
+      "name": "CFL_SMS_Sent_Success",
+      "query": "select * from ( select trunc(s.Itrcvdate) datetime, count(1) total from SMSQUEUE s where s.bookedid is null and  s.status=40 and s.sndrcv='S' group by trunc(s.Itrcvdate)  order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "connection": "CFL",
+      "chart": "line"
+    },
+    {
+      "name": "CFL_SMS_Received_Success",
+      "query": "select * from ( select trunc(s.Itrcvdate) datetime, count(1) total from SMSQUEUE s where s.bookedid is null and  s.status=40 and s.sndrcv='S' group by trunc(s.Itrcvdate)  order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "connection": "CFL",
+      "chart": "line"
+    },
+    {
+      "name": "CFL_SMS_Failed",
+      "query": "select * from ( select trunc(s.Itrcvdate) datetime, count(1) total from SMSQUEUE s where s.bookedid is null and  s.status=40 and s.sndrcv='S' group by trunc(s.Itrcvdate)  order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "connection": "CFL",
       "chart": "line"
     },
     {
