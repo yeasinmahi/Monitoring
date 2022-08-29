@@ -13,8 +13,8 @@ class Data_Populate(object):
             data = json.load(f)
             f.close()
             return data
-        except:
-            return ""
+        except Exception as e:
+            return print(e)
 
     def Export_Excel(self,data,name):
         df = pd.DataFrame(list(data))
