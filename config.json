@@ -44,97 +44,109 @@
   "queries": [
     {
       "name": "SignIn_SignUp_Bonus",
-      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%processbonus%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'processbonus[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
       "chart": "line"
     },
     {
       "name": "Generate_CPID",
-      "query": "select * from (select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='OGate' and method like '%cpid%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "query": "select * from (select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='OGate' and LOWER(method) like '%cpid%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
       "chart": "line"
     },
     {
       "name": "Register_CPID",
-      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%registerCpid%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'registercpid[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
       "chart": "line"
     },
     {
       "name": "IsServiceEligible",
-      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%IsServiceEligible%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'isserviceeligible[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
       "chart": "line"
     },
     {
-      "name": "GetCustomerInfo",
-      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%GetCustomerInfo%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "name": "GetCustomerInfo_Nagad",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'getcustomerinfo[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
+      "connection": "ApiHublog",
+      "chart": "line"
+    },
+    {
+      "name": "Registration_Nagad",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'registrationstatus[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
       "chart": "line"
     },
     {
       "name": "DataPackPurchase",
-      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%DataPackPurchase%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'datapackpurchase[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
+      "connection": "ApiHublog",
+      "chart": "line"
+    },
+    {
+      "name": "PlanStatus",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'planstatus[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
       "chart": "line"
     },
     {
       "name": "PurchasePlan",
-      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%purchasePlan%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'purchaseplan[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
       "chart": "line"
     },
     {
       "name": "SendOTP",
-      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%SendOTP%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'sendotp[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
       "chart": "line"
     },
     {
       "name": "VolumeTransfer",
-      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and method like '%VolumeTransfer%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'volumetransfer[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
       "chart": "line"
     },
     {
       "name": "Facebook",
-      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB' and method like '%cmswebservice4%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB' and LOWER(method) like '%cmswebservice4%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
       "chart": "line"
     },
     {
       "name": "Token",
-      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='IDM' and method like '%token%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='IDM' and LOWER(method) = 'token[idm]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
       "chart": "line"
     },
     {
       "name": "CFL_Medallia_Total_Requests",
-      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='CFLWebService' and method like '%SMSForwading%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='CFLWebService' and LOWER(method) = 'smsforwading.svc[cflwebservice]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
       "chart": "line"
     },
     {
       "name": "CFL_SMS_Sent_Success",
-      "query": "select * from ( select trunc(s.Itrcvdate) datetime, count(1) total from SMSQUEUE s where s.bookedid is null and  s.status=40 and s.sndrcv='S' group by trunc(s.Itrcvdate)  order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "query": "select * from ( select trunc(s.Itrcvdate) datetime, count(1) total from SMSQUEUE s where s.bookedid is null and  s.status=40 and s.sndrcv='S' group by trunc(s.Itrcvdate)  order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "CFL",
       "chart": "line"
     },
     {
       "name": "CFL_SMS_Received_Success",
-      "query": "select * from ( select trunc(s.Itrcvdate) datetime, count(1) total from SMSQUEUE s where s.bookedid is null and  s.status=40 and s.sndrcv='S' group by trunc(s.Itrcvdate)  order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "query": "select * from ( select trunc(s.Itrcvdate) datetime, count(1) total from SMSQUEUE s where s.bookedid is null and  s.status=40 and s.sndrcv='R' group by trunc(s.Itrcvdate)  order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "CFL",
       "chart": "line"
     },
     {
       "name": "CFL_SMS_Failed",
-      "query": "select * from ( select trunc(s.Itrcvdate) datetime, count(1) total from SMSQUEUE s where s.bookedid is null and  s.status=40 and s.sndrcv='S' group by trunc(s.Itrcvdate)  order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "query": "select * from ( select trunc(s.Itrcvdate) datetime, count(1) total from SMSQUEUE s where s.bookedid is null and  s.status=50 group by trunc(s.Itrcvdate)  order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "CFL",
       "chart": "line"
     },
     {
       "name": "Total_error",
-      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where status !=200 group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 7",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where status !=200 group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
       "chart": "line"
     },
