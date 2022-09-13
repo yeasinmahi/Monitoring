@@ -30,6 +30,7 @@
     <Compile Include="Helper\Email.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Helper\Utility.py" />
     <Compile Include="Main.py">
       <SubType>Code</SubType>
     </Compile>

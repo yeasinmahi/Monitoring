@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import matplotlib.dates as mdates
-
+from Helper.Utility import Utility
 
 class MatPlot(object):
     species = "Diagram"
@@ -38,13 +38,12 @@ class MatPlot(object):
 
             plt.ylim(min,max)
 
-            
-
+           
             myFmt = mdates.DateFormatter('%d')
             ax.xaxis.set_major_formatter(myFmt)
             fig.autofmt_xdate()
             
-
+            Utility().CreateFilePath('Data/Images')
             plt.savefig('Data/Images/'+name+'.png', bbox_inches='tight')
             plt.clf()
             return True
@@ -63,7 +62,7 @@ class MatPlot(object):
             plt.title(name)
             
             plt.pie(y,labels=x)
-
+            Utility().CreateFilePath('Data/Images')
             plt.savefig('Data/Images/'+name+'.png', bbox_inches='tight')
             plt.clf()
             return True

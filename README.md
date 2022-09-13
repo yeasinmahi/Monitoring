@@ -7,3 +7,11 @@ I will add it later
       "connection": "ApiHublog",
       "chart": "line"
     },
+
+    Required packages :
+
+    pandas 
+    pdfkit
+    FPDF
+    cx_Oracle
+    matplotlib

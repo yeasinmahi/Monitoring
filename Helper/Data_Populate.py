@@ -3,6 +3,8 @@ import pandas as pd
 import pdfkit
 #config = pdfkit.configuration(wkhtmltopdf = r"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe")  
 from fpdf import FPDF
+import os
+from Helper.Utility import Utility
 
 class Data_Populate(object):
     species = "Data Load"
@@ -18,6 +20,7 @@ class Data_Populate(object):
 
     def Export_Excel(self,data,name):
         df = pd.DataFrame(list(data))
+        Utility().CreateFilePath('Data/Excels')
         writer = pd.ExcelWriter('Data/Excels/'+name+'.xlsx')
         df.to_excel(writer, sheet_name=name, index=False,  na_rep='NaN')
         writer.save()
