@@ -5,7 +5,7 @@ class Utility(object):
     def CreateFilePath(self,path):
 
         isExist = os.path.exists(path)
-        print(isExist)
+        #print(isExist)
         
         if not isExist:
           os.makedirs(path)

@@ -155,6 +155,20 @@
       "query": "select status,  sum(totalrequest) total from tblapilogsummery where status !=200 and trunc(logtime)=trunc(sysdate-1)  group by status",
       "connection": "ApiHublog",
       "chart": "pie"
+    },
+
+    {
+      "name": "Facebook_Purchase_Success",
+      "query": "select * from (select  trunc(browsedt) datetime, count(1) total from tblappaudittrail_arc where browseurl = 'PurchaseMyOffer' and errormessage is null group by trunc(browsedt)order by 1 desc)where datetime !=trunc(sysdate) and rownum<= 15",
+      "connection": "HVCDB",
+      "chart": "line"
+    },
+
+    {
+      "name": "Facebook_Purchase_Failed",
+      "query": "select * from (select  trunc(browsedt) datetime, count(1) total from tblappaudittrail_arc where browseurl = 'PurchaseMyOffer' and errormessage is not null group by trunc(browsedt)order by 1 desc)where datetime !=trunc(sysdate) and rownum<= 15",
+      "connection": "HVCDB",
+      "chart": "line"
     }
   ]
 }
