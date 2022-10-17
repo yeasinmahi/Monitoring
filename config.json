@@ -11,7 +11,7 @@
     {
       "name": "apihub",
       "username": "ApiHub",
-      "password": "APIHUB_321",
+      "password": "AP1HuB_neW_182aPp",
       "host_ip": "172.16.10.76",
       "port": "2637",
       "sid": "PRODBOS"
@@ -168,6 +168,13 @@
       "name": "Facebook_Purchase_Failed",
       "query": "select * from (select  trunc(browsedt) datetime, count(1) total from tblappaudittrail_arc where browseurl = 'PurchaseMyOffer' and errormessage is not null group by trunc(browsedt)order by 1 desc)where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "HVCDB",
+      "chart": "line"
+    },
+
+    {
+      "name": "RBT_Purchase",
+      "query": "select * from (select trunc(createddate) datetime, count(1) from PACKPURCHASETRIGGERS where platformid = 48 group by trunc(createddate) order by 1 desc)where datetime !=trunc(sysdate) and rownum<= 15",
+      "connection": "apihub",
       "chart": "line"
     }
   ]

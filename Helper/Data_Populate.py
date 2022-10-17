@@ -31,6 +31,8 @@ class Data_Populate(object):
         return df.to_html(index=False)
 
     def images_to_Pdf(self, names,report_name):
+        Utility().CreateFilePath('Data/Images')
+        Utility().CreateFilePath('Data/Pdf')
         pdf = FPDF()
         for name in names:
             pdf.add_page()
