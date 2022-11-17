@@ -38,11 +38,7 @@
     <Compile Include="Helper\Oracle_Con.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".gitattributes" />
-    <Content Include=".gitignore" />
     <Content Include="config.json" />
-    <Content Include="LICENSE.txt" />
-    <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helper\" />
