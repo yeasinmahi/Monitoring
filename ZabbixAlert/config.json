@@ -1,0 +1,71 @@
+{
+  "ConnectionStrings": [
+    {
+      "name": "ApiHublog",
+      "username": "ApiHublog",
+      "password": "AP1HuBL0g_61542627",
+      "host_ip": "172.16.10.76",
+      "port": "2637",
+      "sid": "PRODBOS"
+    },
+    {
+      "name": "apihub",
+      "username": "ApiHub",
+      "password": "AP1HuB_neW_182aPp",
+      "host_ip": "172.16.10.76",
+      "port": "2637",
+      "sid": "PRODBOS"
+    },
+    {
+      "name": "CFL",
+      "username": "CFL",
+      "password": "cfluser_123",
+      "host_ip": "172.16.10.76",
+      "port": "2637",
+      "sid": "PRODBOS"
+    },
+    {
+      "name": "HVCDB",
+      "username": "HVCDB",
+      "password": "hvc",
+      "host_ip": "172.16.10.76",
+      "port": "2637",
+      "sid": "PRODBOS"
+    },
+    {
+      "name": "veon_apps",
+      "username": "veon_apps",
+      "password": "VEON_APPS_321",
+      "host_ip": "172.16.10.76",
+      "port": "2637",
+      "sid": "PRODBOS"
+    }
+  ],
+  "queries": [
+    {
+      "key": "apigateway2test_toffee_total_count",
+      "connection": "apihub",
+      "query": "select count(1) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (33)",
+      "host": "BLAPPDEV02"
+    },
+    {
+      "key": "apigateway2test_toffee_success_count",
+      "connection": "apihub",
+      "query": "select count(1) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (33) and statuscode = 200",
+      "host": "BLAPPDEV02"
+    },
+    {
+      "key": "apigateway2test_toffee_success_rate",
+      "connection": "apihub",
+      "query": "select NVL((case when count(1) <> 0 then ROUND(count(case when statuscode = 200 then 1 end)*100/count(1),2) end),0) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (33)",
+      "host": "BLAPPDEV02"
+    },
+    {
+      "key": "apigateway2test_toffee_avg_rtt",
+      "connection": "apihub",
+      "query": "select ROUND(sum(rtt)/300,2) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (33)",
+      "host": "BLAPPDEV02"
+    }
+
+  ]
+}
