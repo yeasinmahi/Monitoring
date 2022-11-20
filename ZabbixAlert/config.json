@@ -43,29 +43,162 @@
   ],
   "queries": [
     {
-      "key": "apigateway2test_toffee_total_count",
+      "key": "apigateway2_total_count",
+      "connection": "apihub",
+      "query": "select count(1) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute)",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "apigateway2_success_count",
+      "connection": "apihub",
+      "query": "select count(1) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and statuscode = 200",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "apigateway2_success_rate",
+      "connection": "apihub",
+      "query": "select NVL((case when count(1) <> 0 then ROUND(count(case when statuscode = 200 then 1 end)*100/count(1),2) end),0) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute)",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "apigateway2_avg_rtt",
+      "connection": "apihub",
+      "query": "select ROUND(sum(rtt)/300,2) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute)",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "apigateway2_toffee_total_count",
       "connection": "apihub",
       "query": "select count(1) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (33)",
-      "host": "BLAPPDEV02"
+      "host": "GZVWLBOS02"
     },
     {
-      "key": "apigateway2test_toffee_success_count",
+      "key": "apigateway2_toffee_success_count",
       "connection": "apihub",
       "query": "select count(1) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (33) and statuscode = 200",
-      "host": "BLAPPDEV02"
+      "host": "GZVWLBOS02"
     },
     {
-      "key": "apigateway2test_toffee_success_rate",
+      "key": "apigateway2_toffee_success_rate",
       "connection": "apihub",
       "query": "select NVL((case when count(1) <> 0 then ROUND(count(case when statuscode = 200 then 1 end)*100/count(1),2) end),0) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (33)",
-      "host": "BLAPPDEV02"
+      "host": "GZVWLBOS02"
     },
     {
-      "key": "apigateway2test_toffee_avg_rtt",
+      "key": "apigateway2_toffee_avg_rtt",
       "connection": "apihub",
       "query": "select ROUND(sum(rtt)/300,2) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (33)",
-      "host": "BLAPPDEV02"
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "apigateway2_nagad_total_count",
+      "connection": "apihub",
+      "query": "select count(1) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (50,51)",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "apigateway2_nagad_success_count",
+      "connection": "apihub",
+      "query": "select count(1) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (50,51) and statuscode = 200",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "apigateway2_nagad_success_rate",
+      "connection": "apihub",
+      "query": "select NVL((case when count(1) <> 0 then ROUND(count(case when statuscode = 200 then 1 end)*100/count(1),2) end),0) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (50,51)",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "apigateway2_nagad_avg_rtt",
+      "connection": "apihub",
+      "query": "select ROUND(sum(rtt)/300,2) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (50,51)",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "apigateway2_myblbonus_total_count",
+      "connection": "apihub",
+      "query": "select count(1) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (40,55)",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "apigateway2_myblbonus_success_count",
+      "connection": "apihub",
+      "query": "select count(1) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (40,55) and statuscode = 200",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "apigateway2_myblbonus_success_rate",
+      "connection": "apihub",
+      "query": "select NVL((case when count(1) <> 0 then ROUND(count(case when statuscode = 200 then 1 end)*100/count(1),2) end),0) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (40,55)",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "apigateway2_myblbonus_avg_rtt",
+      "connection": "apihub",
+      "query": "select ROUND(sum(rtt)/300,2) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (40,55)",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "apigateway2_googleupsell_total_count",
+      "connection": "apihub",
+      "query": "select count(1) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (39)",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "apigateway2_googleupsell_success_count",
+      "connection": "apihub",
+      "query": "select count(1) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (39) and statuscode = 200",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "apigateway2_googleupsell_success_rate",
+      "connection": "apihub",
+      "query": "select NVL((case when count(1) <> 0 then ROUND(count(case when statuscode = 200 then 1 end)*100/count(1),2) end),0) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (39)",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "apigateway2_googleupsell_avg_rtt",
+      "connection": "apihub",
+      "query": "select ROUND(sum(rtt)/300,2) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (39)",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "cfl_sent_total_count",
+      "connection": "CFL",
+      "query": "select count(1) from smsqueue  where  itrcvdate >= sysdate - (interval '5' minute) and sndrcv = 'S'",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "cfl_sent_success_count",
+      "connection": "CFL",
+      "query": "select count(1) from smsqueue  where  itrcvdate >= sysdate - (interval '5' minute) and sndrcv = 'S' and status = 40",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "cfl_sent_success_rate",
+      "connection": "CFL",
+      "query": "select NVL((case when count(1) <> 0 then ROUND(count(case when status = 40 then 1 end)*100/count(1),2) end),0)  from smsqueue  where  itrcvdate >= sysdate - (interval '5' minute) and sndrcv = 'S'",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "cfl_receive_total_count",
+      "connection": "CFL",
+      "query": "select count(1) from smsqueue  where  itrcvdate >= sysdate - (interval '5' minute) and sndrcv = 'R'",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "cfl_receive_success_count",
+      "connection": "CFL",
+      "query": "select count(1) from smsqueue  where  itrcvdate >= sysdate - (interval '5' minute) and sndrcv = 'R' and status = 40",
+      "host": "GZVWLBOS02"
+    },
+    {
+      "key": "cfl_receive_success_rate",
+      "connection": "CFL",
+      "query": "select NVL((case when count(1) <> 0 then ROUND(count(case when status = 40 then 1 end)*100/count(1),2) end),0)  from smsqueue  where  itrcvdate >= sysdate - (interval '5' minute) and sndrcv = 'R'",
+      "host": "GZVWLBOS02"
     }
+
 
   ]
 }
