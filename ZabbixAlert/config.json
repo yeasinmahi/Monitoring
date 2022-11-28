@@ -90,6 +90,45 @@
       "query": "select ROUND(avg(rtt),2) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (33)",
       "host": "GZVWLBOS02"
     },
+
+    {
+      "key": "apigateway2_toffee_max_tps",
+      "connection": "apihub",
+      "query": "select max(hit_count) from(select TO_CHAR(createdate,'YYYY-MM-DD hh24:mi:ss') ,count(*) as hit_count from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (33) group by TO_CHAR(createdate,'YYYY-MM-DD hh24:mi:ss')) ",
+      "host": "GZVWLBOS02"
+    },
+
+    {
+      "key": "apigateway2_toffee_avg_tps",
+      "connection": "apihub",
+      "query": "select round(sum(hit_count) / count(*),2) from( select TO_CHAR(createdate,'YYYY-MM-DD hh24:mi:ss') ,count(*) as hit_count from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (33) group by TO_CHAR(createdate,'YYYY-MM-DD hh24:mi:ss'))",
+      "host": "GZVWLBOS02"
+    },
+
+
+
+    {
+      "key": "apigateway2_toffee_idm_total_count",
+      "connection": "apihub",
+      "query": "select distinct method from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (33) and method ='CreateToken'",
+      "host": "GZVWLBOS02"
+    },
+
+    {
+      "key": "apigateway2_toffee_idm_success_rate",
+      "connection": "apihub",
+      "query": "select NVL((case when count(1) <> 0 then ROUND(count(case when statuscode = 200 then 1 end)*100/count(1),2) end),0) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (33) and method ='CreateToken'",
+      "host": "GZVWLBOS02"
+    },
+
+    {
+      "key": "apigateway2_toffee_idm_max_tps",
+      "connection": "apihub",
+      "query": "select max(hit_count) from(select TO_CHAR(createdate,'YYYY-MM-DD hh24:mi:ss'),count(*) as hit_count from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (33) and method ='CreateToken' group by TO_CHAR(createdate,'YYYY-MM-DD hh24:mi:ss'))",
+      "host": "GZVWLBOS02"
+    },
+
+
     {
       "key": "apigateway2_nagad_total_count",
       "connection": "apihub",
