@@ -48,6 +48,7 @@
       "connection": "ApiHublog",
       "chart": "line"
     },
+
     {
       "name": "Generate_CPID",
       "query": "select * from (select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='OGate' and LOWER(method) like '%cpid%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
@@ -132,6 +133,12 @@
     {
       "name": "RBT_Purchase",
       "query": "select * from (select trunc(createddate) datetime, count(1) from PACKPURCHASETRIGGERS where platformid = 48 group by trunc(createddate) order by 1 desc)where datetime !=trunc(sysdate) and rownum<= 15",
+      "connection": "apihub",
+      "chart": "line"
+    },
+    {
+      "name": "HOICHOI_Purchase",
+      "query": "select * from (select trunc(createddate) datetime, count(1) from PACKPURCHASETRIGGERS where platformid = 28 group by trunc(createddate) order by 1 desc)where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "apihub",
       "chart": "line"
     },
