@@ -7,6 +7,8 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Monitoring", "Monitoring\Mo
 EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "ZabbixAlert", "ZabbixAlert\ZabbixAlert.pyproj", "{D5E233F9-E3F6-429A-A5CE-888CC67420BC}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Scripts", "Scripts\Scripts.pyproj", "{9933252B-2EB8-4B13-ACED-08A06A564AC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,8 @@ Global
 		{FCF7A0D5-FC93-4667-8A7A-71D61A0EE037}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5E233F9-E3F6-429A-A5CE-888CC67420BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D5E233F9-E3F6-429A-A5CE-888CC67420BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9933252B-2EB8-4B13-ACED-08A06A564AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9933252B-2EB8-4B13-ACED-08A06A564AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
