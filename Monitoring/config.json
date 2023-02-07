@@ -42,140 +42,191 @@
     }
   ],
   "queries": [
+    
+    {
+      "name": "CFL_SMS_Failed",
+      "query": "select * from ( select trunc(s.Itrcvdate) datetime, count(1) total from SMSQUEUE s where s.bookedid is null and  s.status=50 group by trunc(s.Itrcvdate)  order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
+      "connection": "CFL",
+      "chart": "line",
+      "titel": "CFL sms fail count for last 15 days "
+    },
+    {
+      "name": "Total_error",
+      "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where status !=200 group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
+      "connection": "ApiHublog",
+      "chart": "line",
+      "titel": "Total error count for last 15 days "
+    },
+    {
+      "name": "Error_Status",
+      "query": "select status,  sum(totalrequest) total from tblapilogsummery where status !=200 and trunc(logtime)=trunc(sysdate-1)  group by status",
+      "connection": "ApiHublog",
+      "chart": "pie",
+      "columns": "Status,Count",
+      "titel": "Status wise error report for last 15 days "
+    }
+  ],
+
+
+  "queries23": [
     {
       "name": "SignIn_SignUp_Bonus",
       "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'processbonus[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
-      "chart": "line"
+      "chart": "line",
+      "titel": "MyBL app Bonus count for last 15 days "
+
     },
     {
       "name": "Generate_CPID",
       "query": "select * from (select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='OGate' and LOWER(method) like '%cpid%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
-      "chart": "line"
+      "chart": "line",
+      "titel": "CPID genarate count for last 15 days "
     },
     {
       "name": "Register_CPID",
       "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'registercpid[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
-      "chart": "line"
+      "chart": "line",
+      "titel": "CPID registration count for last 15 days "
     },
     {
       "name": "IsServiceEligible",
       "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'isserviceeligible[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
-      "chart": "line"
+      "chart": "line",
+      "titel": "Service eligible API count for last 15 days "
     },
     {
       "name": "GetCustomerInfo_Nagad",
       "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'getcustomerinfo[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
-      "chart": "line"
+      "chart": "line",
+      "titel": "CustomerInfo API request from Nagad for last 15 days "
     },
     {
       "name": "Registration_Nagad",
       "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'registrationstatus[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
-      "chart": "line"
+      "chart": "line",
+      "titel": "Registration API request from Nagad count for last 15 days "
     },
     {
       "name": "DataPackPurchase",
       "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'datapackpurchase[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
-      "chart": "line"
+      "chart": "line",
+      "titel": "Pack purchase API count [APIHUB2] count for last 15 days "
     },
     {
       "name": "PlanStatus",
       "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'planstatus[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
-      "chart": "line"
+      "chart": "line",
+      "titel": "Plan status API count [APIHUB2] count for last 15 days "
     },
     {
       "name": "PurchasePlan",
       "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'purchaseplan[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
-      "chart": "line"
+      "chart": "line",
+      "titel": "Purchase plan API count [APIHUB2] for last 15 days "
     },
     {
       "name": "SendOTP",
       "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'sendotp[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
-      "chart": "line"
+      "chart": "line",
+      "titel": "Send OTP API count for last 15 days "
     },
     {
       "name": "VolumeTransfer",
       "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB2' and LOWER(method) = 'volumetransfer[apihub2]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
-      "chart": "line"
+      "chart": "line",
+      "titel": "Volumn Transfer API count for last 15 days "
     },
     {
       "name": "Facebook_Requests",
       "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='APIHUB' and LOWER(method) like '%cmswebservice4%' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
-      "chart": "line"
+      "chart": "line",
+      "titel": "Facebook api count for last 15 days "
     },
 
     {
       "name": "Facebook_Purchase_Success",
       "query": "select * from (select  trunc(browsedt) datetime, count(1) total from tblappaudittrail_arc where browseurl = 'PurchaseMyOffer' and errormessage is null group by trunc(browsedt)order by 1 desc)where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "HVCDB",
-      "chart": "line"
+      "chart": "line",
+      "titel": "Facebook purchase success for last 15 days "
     },
 
     {
       "name": "Facebook_Purchase_Failed",
       "query": "select * from (select  trunc(browsedt) datetime, count(1) total from tblappaudittrail_arc where browseurl = 'PurchaseMyOffer' and errormessage is not null group by trunc(browsedt)order by 1 desc)where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "HVCDB",
-      "chart": "line"
+      "chart": "line",
+      "titel": "Facebook purchase fail for last 15 days "
     },
 
     {
       "name": "RBT_Purchase",
       "query": "select * from (select trunc(createddate) datetime, count(1) from PACKPURCHASETRIGGERS where platformid = 48 group by trunc(createddate) order by 1 desc)where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "apihub",
-      "chart": "line"
+      "chart": "line",
+      "titel": "RBT purchase count for last 15 days "
     },
     {
       "name": "Token",
       "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='IDM' and LOWER(method) = 'token[idm]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
-      "chart": "line"
+      "chart": "line",
+      "titel": "Token API count for last 15 days "
     },
     {
       "name": "CFL_Medallia_Total_Requests",
       "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where applicationname='CFLWebService' and LOWER(method) = 'smsforwading.svc[cflwebservice]' group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
-      "chart": "line"
+      "chart": "line",
+      "titel": "CFL request count for last 15 days "
     },
     {
       "name": "CFL_SMS_Sent_Success",
       "query": "select * from ( select trunc(s.Itrcvdate) datetime, count(1) total from SMSQUEUE s where s.bookedid is null and  s.status=40 and s.sndrcv='S' group by trunc(s.Itrcvdate)  order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "CFL",
-      "chart": "line"
+      "chart": "line",
+      "titel": "CFL sms success count for last 15 days "
     },
     {
       "name": "CFL_SMS_Received_Success",
       "query": "select * from ( select trunc(s.Itrcvdate) datetime, count(1) total from SMSQUEUE s where s.bookedid is null and  s.status=40 and s.sndrcv='R' group by trunc(s.Itrcvdate)  order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "CFL",
-      "chart": "line"
+      "chart": "line",
+      "titel": "CFL sms receive count for last 15 days "
     },
     {
       "name": "CFL_SMS_Failed",
       "query": "select * from ( select trunc(s.Itrcvdate) datetime, count(1) total from SMSQUEUE s where s.bookedid is null and  s.status=50 group by trunc(s.Itrcvdate)  order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "CFL",
-      "chart": "line"
+      "chart": "line",
+      "titel": "CFL sms fail count for last 15 days "
     },
     {
       "name": "Total_error",
       "query": "select * from ( select trunc(logtime) datetime, sum(totalrequest) total from tblapilogsummery where status !=200 group by trunc(logtime) order by 1 desc) where datetime !=trunc(sysdate) and rownum<= 15",
       "connection": "ApiHublog",
-      "chart": "line"
+      "chart": "line",
+      "titel": "Total error count for last 15 days "
     },
     {
       "name": "Error_Status",
       "query": "select status,  sum(totalrequest) total from tblapilogsummery where status !=200 and trunc(logtime)=trunc(sysdate-1)  group by status",
       "connection": "ApiHublog",
-      "chart": "pie"
+      "chart": "pie",
+      "columns": "Status,Count",
+      "titel": "Status wise error report for last 15 days "
     }
   ]
 }

@@ -8,13 +8,13 @@ class MatPlot(object):
     species = "Diagram"
 
    
-    def Chart(self,data,name,chart):
+    def Chart(self,data,name,chart,titel):
         if(chart=="line"):
-            self.Line(data,name)
+            self.Line(data,name,titel)
         if(chart=="pie"):
-            self.Pie(data,name)
+            self.Pie(data,name,titel)
 
-    def Line(self,data,name):
+    def Line(self,data,name,titel):
         x = []
         y = []
         try:
@@ -30,18 +30,22 @@ class MatPlot(object):
             min = min*.7
 
             fig, ax = plt.subplots()
-            ax.plot(x_date_time, y)
+            ax.plot(x_date_time, y,linestyle='--', marker='o', color='b', label='line with marker')
 
-            plt.title(name)
+            plt.title(titel)
             plt.xlabel("Date")
             plt.ylabel("Count")
 
             plt.ylim(min,max)
-
+           
+           
+            plt.grid()
            
             myFmt = mdates.DateFormatter('%d')
             ax.xaxis.set_major_formatter(myFmt)
             fig.autofmt_xdate()
+
+            
             
             Utility().CreateFilePath('Data/Images')
             plt.savefig('Data/Images/'+name+'.png', bbox_inches='tight')
@@ -49,9 +53,9 @@ class MatPlot(object):
             return True
         except:
             return False;
-        #plt.show()
+        plt.show()
 
-    def Pie(self,data,name):
+    def Pie(self,data,name,titel):
         x = []
         y = []
         try:
@@ -59,7 +63,7 @@ class MatPlot(object):
                 x.append(row[0])
                 y.append(row[1])
             
-            plt.title(name)
+            plt.title(titel)
             
             plt.pie(y,labels=x)
             Utility().CreateFilePath('Data/Images')

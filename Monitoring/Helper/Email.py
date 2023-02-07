@@ -15,8 +15,8 @@ class Email:
         try: 
             date_ = datetime.datetime.strftime((datetime.datetime.today() - datetime.timedelta(days=1)), '%Y-%m-%d')
 
-            sender = "Report<DSSDigitalSolutions@no.smtp.mail>"
-            receiver = ['my.arafat@blmanagedservices.com']
+            sender = "BOSGW Report<DSSDigitalSolutions@no.smtp.mail>"
+            receiver = ['maria.zaman@banglalink.net']
             #ccaddr = ['maria.zaman@banglalink.net', 'zhaque@banglalink.net', 'imam.ahmed@banglalink.net', 'ferdousul.haque@banglalink.net', 'abdullah.masud@banglalink.net']
             ccaddr = ['maria.zaman@banglalink.net']
 
@@ -27,7 +27,7 @@ class Email:
 
             receiver.extend(ccaddr)
 
-            msg['Subject'] = f'Health check report {date_}'
+            msg['Subject'] = f'BOSGW Health check report {date_}'
             html = Data_Populate().get_html_templete(names)
             msg.attach(MIMEText(html, 'html'))
             

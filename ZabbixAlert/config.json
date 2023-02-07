@@ -110,7 +110,7 @@
     {
       "key": "apigateway2_toffee_idm_total_count",
       "connection": "apihub",
-      "query": "select distinct method from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (33) and method ='CreateToken'",
+      "query": "select count(1) from tblappaudittrail where  createdate >= sysdate - (interval '5' minute) and serviceuserid in (33) and method ='CreateToken'",
       "host": "GZVWLBOS02"
     },
 

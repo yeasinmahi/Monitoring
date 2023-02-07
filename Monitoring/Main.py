@@ -10,17 +10,22 @@ date_ = datetime.datetime.strftime((datetime.datetime.today() - datetime.timedel
 
 names = []
 for i in Settings().GetQueries():
+    #print(i)
     name = i["name"]
     names.append(name)
     query = i["query"]
     connectionName = i["connection"]
     chart = i["chart"]
-
-    print(name+"\n"+ connectionName+"\n"+ query+"\n\n")
-
-    result = execute(query,connectionName);
-    Data_Populate().Export_Excel(result,name)
-    MatPlot().Chart(result,name,chart)
+   
+    result = execute(query,connectionName)
+    if "columns" in i:
+   
+        #print(i['columns']+"\n"+ connectionName+"\n"+ query+"\n\n")
+        li = list(i['columns'].split(","))
+        Data_Populate().Export_Excel(result,name,li)
+    else:
+        Data_Populate().Export_Excel(result,name)
+    MatPlot().Chart(result,name,chart,i['titel'])
 Email().send_mail(names)
 
 

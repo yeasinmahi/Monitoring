@@ -18,8 +18,12 @@ class Data_Populate(object):
         except Exception as e:
             return print(e)
 
-    def Export_Excel(self,data,name):
+    def Export_Excel(self,data,name,columns=['Date','count']):
+        
         df = pd.DataFrame(list(data))
+       
+        df.columns =columns
+        print(df)
         Utility().CreateFilePath('Data/Excels')
         writer = pd.ExcelWriter('Data/Excels/'+name+'.xlsx')
         df.to_excel(writer, sheet_name=name, index=False,  na_rep='NaN')
