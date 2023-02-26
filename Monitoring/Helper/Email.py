@@ -17,7 +17,7 @@ class Email:
 
             sender = "BOSGW Report<DSSDigitalSolutions@no.smtp.mail>"
             receiver = ['maria.zaman@banglalink.net']
-            #ccaddr = ['maria.zaman@banglalink.net', 'zhaque@banglalink.net', 'imam.ahmed@banglalink.net', 'ferdousul.haque@banglalink.net', 'abdullah.masud@banglalink.net']
+            #ccaddr = ['maria.zaman@banglalink.net', 'imam.ahmed@banglalink.net', 'ferdousul.haque@banglalink.net','yeaminul.islam@banglalink.net']
             ccaddr = ['maria.zaman@banglalink.net']
 
             msg = MIMEMultipart()
