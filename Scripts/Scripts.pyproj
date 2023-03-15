@@ -22,6 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="HoichoiManualSubscription.py" />
     <Compile Include="ServerResourceChecker.py" />
     <Compile Include="Socket2.py" />
     <Compile Include="Socket.py" />
